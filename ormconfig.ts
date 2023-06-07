@@ -1,0 +1,17 @@
+import { Film } from 'src/entities/film.entity';
+import { User } from 'src/entities/user.entity';
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
+
+const config: PostgresConnectionOptions = {
+  type: 'postgres',
+  database: 'backendTest',
+  host: 'localhost',
+  port: 5432,
+  username: 'postgres',
+  password: 'postgres',
+  entities: [User, Film],
+  synchronize: true,
+  migrations: ["src/migrations/**/*.ts"]
+};
+
+export default config;
