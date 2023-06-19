@@ -7,11 +7,13 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.setGlobalPrefix('api');
+  app.enableCors({origin:"*"})
   app.useGlobalPipes(new ValidationPipe({}));
   const config = new DocumentBuilder().build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   app.use(cookieParser());
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();

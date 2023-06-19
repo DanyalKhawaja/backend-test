@@ -13,7 +13,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async signIn(loginDto: LoginDto): Promise<string> {
+  async login(loginDto: LoginDto): Promise<string> {
     const genLoginPasswordHash = genHash(loginDto.password);
     const userEntity = await this.userRepository.findOne({
       where: { email: loginDto.email },

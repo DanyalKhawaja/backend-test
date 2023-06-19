@@ -22,7 +22,7 @@ export class FilmService {
   async addFilm(filmDto: FilmDto): Promise<Film> {
     let film = this.filmRepository.create(filmDto);
     film = await this.filmRepository.save(film);
-    await this.elasticsearchService.index({
+    const esResult = await this.elasticsearchService.index({
       id: film.id.toString(),
       index: "film",
       body: film,
@@ -30,15 +30,31 @@ export class FilmService {
     return film;
   }
 
-  async searchFilm(text: string): Promise<SearchResponse> {
+  async search(text: string, field: string): Promise<SearchResponse> {
     const results = await this.elasticsearchService.search({
       index: "film",
+      min_score: 0.5,
       query: {
-        match: {
-          quote: text,
+        bool: {
+          must: [
+            {
+              match_phrase_prefix: {
+                [field]: {
+                  query: text,
+                },
+              },
+            },
+          ],
+          filter: [],
+          should: [],
+          must_not: [],
         },
       },
     });
     return results;
+  }
+
+  async all(): Promise<Film[]> {
+    return await this.filmRepository.find();
   }
 }

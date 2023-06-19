@@ -1,3 +1,4 @@
+import { float } from '@elastic/elasticsearch/lib/api/types';
 import { IsNotEmpty } from 'class-validator';
 
 export class FilmDto {
@@ -8,15 +9,13 @@ export class FilmDto {
 
   description: string;
 
-  release_date: Date;
+  releaseDate: Date;
 
-  ticket_price: number;
+  ticketPrice: number;
 
   country: string;
 
   genre: string;
-
-  photo: string;
 
   rating: number;
 }

@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from "typeorm";
-import { genHash } from "../util";
+import { Entity, PrimaryGeneratedColumn, Column, InsertEvent, Decimal128, EventSubscriber, EntitySubscriberInterface, AfterInsert } from "typeorm";
 
 @Entity()
 export class Film {
@@ -14,10 +13,10 @@ export class Film {
   description: string;
 
   @Column()
-  release_date: Date;
+  releaseDate: Date;
 
   @Column()
-  ticket_price: number;
+  ticketPrice: number;
 
   @Column()
   country: string;
@@ -26,8 +25,16 @@ export class Film {
   genre: string;
 
   @Column()
-  photo: string;
-
-  @Column()
   rating: number;
 }
+
+// @EventSubscriber()
+// export class FilmSubscriber implements EntitySubscriberInterface<Film> {
+//   listenTo() {
+//     return Film;
+//   }
+  
+//   afterInsert(event: InsertEvent<Film>) {
+//     console.log(`BEFORE PRODUCT UPDATED: `, event.entity);
+//   }
+// }

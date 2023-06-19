@@ -7,7 +7,7 @@ import { Repository } from "typeorm";
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User) private readonly userRepository: Repository<User>
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
   async getUser(id: number): Promise<User> {
@@ -17,5 +17,9 @@ export class UserService {
   async createUser(userDto: UserDto): Promise<User> {
     const user = this.userRepository.create(userDto);
     return await this.userRepository.save(user);
+  }
+
+  async all(): Promise<User[]> {
+    return await this.userRepository.find();
   }
 }

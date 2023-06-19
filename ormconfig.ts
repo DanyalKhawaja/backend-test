@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { Film } from 'src/entities/film.entity';
 import { User } from 'src/entities/user.entity';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
@@ -10,8 +11,10 @@ const config: PostgresConnectionOptions = {
   username: 'postgres',
   password: 'postgres',
   entities: [User, Film],
+  logging: true,
   synchronize: true,
-  migrations: ["src/migrations/**/*.ts"]
+  migrationsRun: true,
+  migrations: [ path.resolve(`${__dirname}/src/migrations/*{.ts,.js}`)],
 };
 
 export default config;

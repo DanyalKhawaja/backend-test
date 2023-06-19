@@ -18,7 +18,14 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "containers": "sudo docker-compose up"
+    "containers": "sudo docker-compose up",
+    "migration:generate": "npm run typeorm -- migration:create",
+    "migrate": "npm run typeorm -- migration:run -d ormconfig.ts",
+    "migrate:down": "npm run typeorm -- migration:revert -d ./ormconfig.ts",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "seed:generate": "yarn run typeorm -- migration:create",
+    "seed": "yarn typeorm -- migration:run",
+    "seed:down": "npm run typeorm -- migration:revert -d ormconfig.ts"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^8.8.0",

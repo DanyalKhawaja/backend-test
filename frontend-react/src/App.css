@@ -1,0 +1,24 @@
+.App {
+  text-align: center;
+  /* background-size: cover; */
+  /* background-image: url(../public/background.jpg); */
+  background: cornsilk;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+
+.App-header {
+  background-color: #2a68e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
