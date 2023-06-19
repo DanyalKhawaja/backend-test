@@ -18,7 +18,7 @@ Pending
 Added
 
 ## Migration
-Added - Need to re-run app and remove migration table from DB, Then re-run to seed film table. There is correct method exists to be used in production (not done as yet)
+Added - Need to re-run app and remove migration table from DB, Then re-run to seed film table. There is correct method is to create tables in a seperate migration and set `synchronize` to false in `ormconfig.ts` (not done as yet)
 
 ## Queries with Elastic Serach
 Search for Name, Genre & Description is added
