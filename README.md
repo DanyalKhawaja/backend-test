@@ -8,7 +8,8 @@ swagger docs: localhost:3000/api
 ```bash
 $ yarn 
 $ yarn containers
-$ yarn run start
+$ yarn run start (backend)
+$ yarn start (frontend) visit to  /login page
 
 ```
 ## Test
@@ -18,7 +19,7 @@ Pending
 Added
 
 ## Migration
-Added - Need to re-run app and remove migration table from DB, Then re-run to seed film table in database and ElasticSearch instance. There is correct method is to create tables in a seperate migration and set `synchronize` to false in `ormconfig.ts` (not done as yet)
+Added - Will run on `yarn start` and create tables and seed postgresDB and elasticsearch.
 
 ## Queries with Elastic Serach
 Search for Name, Genre & Description is added, Comments and ranking not added. Also search inputs needs to be debounced.

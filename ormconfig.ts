@@ -12,7 +12,7 @@ const config: PostgresConnectionOptions = {
   password: 'postgres',
   entities: [User, Film],
   logging: true,
-  synchronize: true,
+  synchronize: false,
   migrationsRun: true,
   migrations: [ path.resolve(`${__dirname}/src/migrations/*{.ts,.js}`)],
 };

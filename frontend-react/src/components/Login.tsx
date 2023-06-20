@@ -36,7 +36,7 @@ export const Login = () => {
         <h1>Please Log In</h1>
         <form className="login-wrapper" onSubmit={(e) => handleSubmit(e)}>
           <label>
-            <p>Username</p>
+            <p>Email</p>
             <input
               type="text"
               name="email"

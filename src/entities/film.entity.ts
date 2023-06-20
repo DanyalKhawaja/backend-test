@@ -27,14 +27,3 @@ export class Film {
   @Column()
   rating: number;
 }
-
-// @EventSubscriber()
-// export class FilmSubscriber implements EntitySubscriberInterface<Film> {
-//   listenTo() {
-//     return Film;
-//   }
-  
-//   afterInsert(event: InsertEvent<Film>) {
-//     console.log(`BEFORE PRODUCT UPDATED: `, event.entity);
-//   }
-// }
